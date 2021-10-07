@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useCallback, useEffect } from "react";
 import "./index.css";
+import { FaPlus, FaMinus } from "react-icons/fa";
 const StudentCard = ({ student, onTagUpdate }) => {
   const {
     id,
@@ -38,9 +39,10 @@ const StudentCard = ({ student, onTagUpdate }) => {
       if (event.key === "Enter" && event.target.value !== "") {
         onTagUpdate(id, event.target.value);
         event.target.value = "";
+        console.log(student);
       }
     },
-    [onTagUpdate, student.id]
+    [id, onTagUpdate]
   );
 
   return (
@@ -53,24 +55,43 @@ const StudentCard = ({ student, onTagUpdate }) => {
         <p>Email: {email}</p>
         <p>Company: {company}</p>
         <p>Skill: {skill}</p>
-        <p>Average: {average}</p>
+        <p>Average: {average}%</p>
         <p>
-          {tags.map((tag, index) => (
-            <span key={`student-${student.id} --- tag-${index}`}>{tag}</span>
-          ))}
+          <div className="toggleGradesDiv">
+            {gradesVisible &&
+              grades.map((grade, index) => {
+                return (
+                  <p key={`test-score-${index}`}>
+                    <span>Test {index + 1}:</span>
+                    <span>{grade}%</span>
+                  </p>
+                );
+              })}
+          </div>
+
+          <div className="toggleTagDiv">
+            {tags.map((tag, index) => (
+              <>
+                <span
+                  className="showTag"
+                  key={`student-${student.id} --- tag-${index}`}
+                >
+                  {tag}
+                </span>
+              </>
+            ))}
+          </div>
         </p>
-        <input placeholder="Add a tog" onKeyUp={onTagChange} />
-        {gradesVisible &&
-          grades.map((grade, index) => {
-            return (
-              <p key={`test-score-${index}`}>
-                <span>Test {index + 1}:</span>
-                <span>{grade}%</span>
-              </p>
-            );
-          })}
+        <input
+          className="addTagInput"
+          placeholder="Add a tag"
+          onKeyUp={onTagChange}
+        />
       </div>
-      <span onClick={toggleGradesVisible}> {gradesVisible ? "-" : "+"}</span>
+      <span className="toggleGradesSign" onClick={toggleGradesVisible}>
+        {" "}
+        {gradesVisible ? <FaMinus /> : <FaPlus />}
+      </span>
     </div>
   );
 };

@@ -7,42 +7,68 @@ function App() {
   const [students, setStudents] = useState([]);
   const [searchString, setSearchString] = useState("");
   const [tagSearchString, setTagSearchString] = useState("");
-  useEffect(() => {
-    (async function () {
-      const profiles = await FetchProfiles();
-
-      setStudents(profiles);
-    })();
-  }, []);
 
   const filteredStudents = useMemo(() => {
-    if (setSearchString.length === 0 && tagSearchString.length === 0) {
-      return students;
-    }
-
-    if (searchString === 0) {
+    if (searchString.length === 0 && tagSearchString.length === 0) {
       return students;
     }
     const stringToMatch = searchString.toLowerCase();
-    return students.filter((student) => {
-      const nameToString = student.firstName + student.lastName;
-      return nameToString.toLowerCase().includes(stringToMatch);
-    });
-  }, [searchString, students, tagSearchString.length]);
+    const tagStringToMatch = tagSearchString.toLowerCase();
+
+    if (stringToMatch !== "") {
+      return students.filter((student) => {
+        const nameToString = student.firstName + student.lastName;
+        return nameToString.toLowerCase().includes(stringToMatch);
+      });
+    }
+
+    if (tagStringToMatch !== "") {
+      return students.filter((studentTag) => {
+        const tagToString = studentTag.tags;
+        return tagToString.includes(tagStringToMatch);
+      });
+    }
+    // return students
+    //   .filter((student) => {
+    //     const nameToString = student.firstName + student.lastName;
+    //     return nameToString.toLowerCase().includes(stringToMatch);
+    //   })
+    //   .filter((studentTag) => {
+    //     const tagToString = studentTag.tags;
+    //     return tagToString.includes(tagStringToMatch);
+    //   });
+  }, [searchString, students, tagSearchString]);
 
   const handleTagUpdate = useCallback((id, tag) => {
     setStudents((prevStudent) => {
       return prevStudent.map((student) => {
         if (student.id === id) {
+          console.log(student.id + "--->" + id);
+          console.log(tag);
           const tags = [...student.tags, tag];
+          console.log(tags);
           return {
             ...student,
             tags,
           };
         }
+
         return student;
       });
     });
+    console.log(students);
+  }, []);
+
+  useEffect(() => {
+    (async function () {
+      const profiles = await FetchProfiles();
+      setStudents(
+        profiles.map((uStudent) => ({
+          ...uStudent,
+          tags: [],
+        }))
+      );
+    })();
   }, []);
   return (
     <>
