@@ -14,8 +14,6 @@ const StudentCard = ({ student, onTagUpdate }) => {
     tags = [],
   } = student;
 
-  //setNewStudent(student);
-  // console.log(newStudent);
   const [gradesVisible, setGradesVisible] = useState(false);
   const name = useMemo(() => {
     return `${firstName} ${lastName}`;
