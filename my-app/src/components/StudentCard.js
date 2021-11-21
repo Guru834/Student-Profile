@@ -37,9 +37,9 @@ const StudentCard = ({ student, onTagUpdate }) => {
   const onTagChange = useCallback(
     (event) => {
       if (event.key === "Enter" && event.target.value !== "") {
-        onTagUpdate(id, event.target.value);
+        const val = event.target.value.toLowerCase();
+        onTagUpdate(id, val);
         event.target.value = "";
-        console.log(student);
       }
     },
     [id, onTagUpdate]

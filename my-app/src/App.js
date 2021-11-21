@@ -12,8 +12,8 @@ function App() {
     if (searchString.length === 0 && tagSearchString.length === 0) {
       return students;
     }
-    const stringToMatch = searchString.toLowerCase();
-    const tagStringToMatch = tagSearchString.toLowerCase();
+    const stringToMatch = searchString;
+    const tagStringToMatch = tagSearchString;
 
     if (stringToMatch !== "") {
       return students.filter((student) => {
@@ -28,25 +28,14 @@ function App() {
         return tagToString.includes(tagStringToMatch);
       });
     }
-    // return students
-    //   .filter((student) => {
-    //     const nameToString = student.firstName + student.lastName;
-    //     return nameToString.toLowerCase().includes(stringToMatch);
-    //   })
-    //   .filter((studentTag) => {
-    //     const tagToString = studentTag.tags;
-    //     return tagToString.includes(tagStringToMatch);
-    //   });
   }, [searchString, students, tagSearchString]);
 
   const handleTagUpdate = useCallback((id, tag) => {
     setStudents((prevStudent) => {
       return prevStudent.map((student) => {
         if (student.id === id) {
-          console.log(student.id + "--->" + id);
-          console.log(tag);
           const tags = [...student.tags, tag];
-          console.log(tags);
+
           return {
             ...student,
             tags,
@@ -56,7 +45,6 @@ function App() {
         return student;
       });
     });
-    console.log(students);
   }, []);
 
   useEffect(() => {
