@@ -1,6 +1,3 @@
-#body {
-  background-color: grey;
-}
 .mainContainer {
   background-color: white;
   min-width: 930px;
@@ -66,7 +63,7 @@
 .showTag {
   background-color: lightgray;
   border-radius: 2px;
-  padding: 12x;
+  padding: 12px;
   margin: 5px;
 }
 .toggleGradesDiv {
