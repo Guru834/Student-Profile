@@ -1,3 +1,30 @@
+# Student-profile__React.js
+<a href = 'https://www.hatchways.io/'>Hatchways</a> assigned me this application as part of an assignment. It's a student markesheet software in which the user may keep track of their students' names, photos, grades, and create tags for them.
+
+# Contributors
+<a href = 'https://github.com/Guru834/'>Guru834</a>
+
+# Built With:
+<ul>
+  <li><a href = 'https://reactjs.org/'>React</a> - React is a free and open-source front-end JavaScript library for building user interfaces based on UI components.</li>
+  <li><a href = 'https://openweathermap.org/api'>Hatchways API</a> - Access current weather data for any location including over 200,000 cities.</li>
+  <li><a href = 'https://react-icons.github.io/react-icons/'>React Icons</a> - Include popular icons in your React projects easily with react-icons, which utilizes ES6 imports that allows you to include only the icons that your project is using.</li>
+</ul>
+
+# Features:
+<ul>
+  <li>The user can save a list of students that includes their photo, names, test grades, and a tag.</li>
+  <li>If the list of students becomes too large, the user can search for a specific student by name or tag.</li>
+</ul>
+<br />
+
+
+
+https://user-images.githubusercontent.com/58672398/142751519-1fe2e0d0-c029-4ab4-9243-442ba0f50d93.mov
+
+
+<br />
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -66,5 +93,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
 ### `npm run build` fails to minify
-
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
