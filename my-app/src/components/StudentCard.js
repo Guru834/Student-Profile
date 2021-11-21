@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useCallback, useEffect } from "react";
+import React, { useMemo, useState, useCallback } from "react";
 import "./index.css";
 import { FaPlus, FaMinus } from "react-icons/fa";
 const StudentCard = ({ student, onTagUpdate }) => {
